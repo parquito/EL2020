@@ -4,13 +4,13 @@ This is a simple Python script to email or text the IP of the Pi to you every ti
 
 In order to use this script as intended you must:
 
-###Attain an app password from Google for gmail so the script can use the smtp server:
+**Attain an app password from Google for gmail so the script can use the smtp server:**
 
 *Go to my.account.google.com/security , and click on the "app passwords section"
 *Select the app "mail" in this case, and click "generate"
 *Copy or save the password to use later in the Python script
 
-###Modify the mail_ip.py script:
+**Modify the mail_ip.py script:**
 
 *Change eFROM variable to your gmail address
 *Change eTO to the address you want to send the email to. If you want to receive the email as a
