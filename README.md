@@ -1,5 +1,7 @@
 # EL2020
 
+![alt text](https://www.newpaltz.edu/media/identity/logos/newpaltzlogo.jpg)
+
 Name: Parker McWilliams
 
 Major: Digital Media Production
