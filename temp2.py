@@ -30,7 +30,7 @@ server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 eCHK = 0
 
 #connect db
-con = sql.connect('../tempLog.db')
+con = sql.connect('/tempLog.db')
 cur = con.cursor()
 
 ### this will do it to greenPin if greenPin is sent to oneBlink
