@@ -30,7 +30,7 @@ server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 eCHK = 0
 
 #connect db
-con = sql.connect('/tempLog.db')
+con = sql.connect('tempLog.db')
 cur = con.cursor()
 
 ### this will do it to greenPin if greenPin is sent to oneBlink
@@ -87,13 +87,16 @@ try:
 			tempF, humid = readDHT(tempPin)
 			print(tempF,humid)
 
-			cur.execute('INSERT INTO tempLog values(?,?,?)', (time.strftime('%Y-%m-%d %H:%M:%S'),tempF, humid))
+#			cur.execute('INSERT INTO tempLog values(?,?,?)', (time.strftime('%Y-%m-%d %H:%M:%S'),tempF, humid))
+			cur.execute('INSERT INTO tempLog values(?,?)', (time.strftime('%Y-%m-%d %H:%M:%S'), tempF))
 			con.commit()
 			table = con.execute("select * from tempLog limit 5")
 			os.system('clear')
-			print "%-30s %-20s %-20s" %("Date/Time", "Temp", "Humidity")
+#			print "%-30s %-20s %-20s" %("Date/Time", "Temp", "Humidity")
+			print "%-30s %-20s" %("Date/Time", "Temp")
 			for row in table:
-				print "%-30s %-20s %-20s" %(row[0], row[1], row[2])
+#				print "%-30s %-20s %-20s" %(row[0], row[1], row[2])
+				print "%-30s %-20s" %(row[0], row[1])
 			oldTime = time.time()
 except KeyboardInterrupt:
 		os.system('clear')
