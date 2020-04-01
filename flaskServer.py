@@ -15,14 +15,12 @@ import RPi.GPIO as GPIO
 import time
 
 
-pin = 22
+pin = 27
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin,GPIO.OUT)
 
 #Globals
-con = sql.connect('tempLog.db')
-cur = con.cursor()
 app = Flask(__name__)
 
 @app.route("/")
@@ -31,8 +29,10 @@ def index():
 
 @app.route("/sqlData")
 def chartData():
+	con = sql.connect('tempLog.db')
+	cur = con.cursor()
 	con.row_factory = sql.Row
-	cur.execute("SELECT Date, Temperature FROM tempLog WHERE Temperature > 60")
+	cur.execute("SELECT DateTime, Temperature FROM tempLog WHERE Temperature > 60")
 	dataset = cur.fetchall()
 	print (dataset)
 	chartData = []
@@ -40,14 +40,16 @@ def chartData():
 		chartData.append({"Date": row[0], "Temperature": float(row[1])})
 	return Response(json.dumps(chartData), mimetype='application/json')
 
-@app.route("/")
-	def blink():
-		GPIO.output(22,True)
+@app.route("/blink")
+def blink():
+	i = 1
+	while i < 7:
+		GPIO.output(27,True)
 		time.sleep(1)
-		GPIO.output(22,False)
+		GPIO.output(27,False)
 		time.sleep(1)
-		print "blink"
-	return "blink"
+		i += 1
+	return render_template('index.html')
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=2020, debug=True)
+	app.run(host='0.0.0.0', port=2020, debug=True, use_reloader=False)
