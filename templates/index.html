@@ -8,8 +8,8 @@
 		<meta http-equiv="Expires" content="0" />
 
 		<title>Smoke Log</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery//2.1.4/jquery.min.js"></script>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
 
 	</head>
 	<h1>Detection History</h1>
@@ -57,7 +57,8 @@
 				dataTable.addColumn({ type: 'string', id: 'reading' });
 				dataTable.addColumn({ type: 'date', id: 'Start' });
 				dataTable.addColumn({ type: 'date', id: 'End' });
-				dataTable.addRows([charData]);
+				dataTable.addRows([
+					[ 'smoke detected', new Date(chartData), new Date(chartData + 00:00:30) ]]);
 				chart.draw(dataTable);
 			}
 	        
