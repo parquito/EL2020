@@ -7,17 +7,21 @@
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
 
-		<title>Smoke Calendar</title>
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<title>Smoke Log</title>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	</head>
 
-	<body onload="go()">
+
+	</head>
+	<h1>Detection History</h1>
+	<center>
 		
+	</center>
+	<body onload="go()">
+				
 		
 		<script type='text/javascript'>
-
+			google.charts.load('current', {'packages':['timeline']});
+			google.charts.setOnLoadCallback(drawChart);
 			//create empty array as a global
 			var chartData = [];
 			//This function is called when the page loads
@@ -41,19 +45,25 @@
 					for (i = 0; i < chartJSON.length; i++){
 						chartData.push([new Date(chartJSON[i].Date), chartJSON[i].Smoke]);
 					};
-					printLog();
+					console.log(chartData);
+					drawChart();
 				});
 			}
-			//prints the sql from array
-			function printLog() {
-				for x in range(len(chartData)):
-					print chartData(x)
-				};
-		}
+			function drawChart() {
+				var container = document.getElementById('timeline');
+				var chart = new google.visualization.Timeline(container);
+				var dataTable = new google.visualization.DataTable();
+
+				dataTable.addColumn({ type: 'string', id: 'reading' });
+				dataTable.addColumn({ type: 'date', id: 'Start' });
+				dataTable.addColumn({ type: 'date', id: 'End' });
+				dataTable.addRows([charData]);
+				chart.draw(dataTable);
+			}
 	        
 	        
 		</script>
-		
+		<div id="timeline" style="height: 180px, width: 400px;"></div>		
 
 	</body>
 
