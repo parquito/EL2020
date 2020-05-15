@@ -14,4 +14,5 @@ Next, you need to make a python script to log the times your sensors are set off
 
 Next, you will need to make a python flask server to use you sql database info and serve an html file. Create a new directory called templates and create a file called index.html inside. index.html will display information from the flask server which gets it's info from the sql database.
 
-Here is an example of my breadboard correctly wired:
+Here is an example of my breadboard correctly wired and a demonstration of the smoke detector:
+
