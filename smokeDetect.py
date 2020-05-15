@@ -1,11 +1,10 @@
-
 import RPi.GPIO as GPIO
 import time, sys
 import os
 import smtplib
 import sqlite3 as sql
-from datetime import datetime
-from datetime import timedelta
+import datetime
+import timedelta
 
 smokePin = 27
 buzzpin = 21

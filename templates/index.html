@@ -43,7 +43,7 @@
 				$.getJSON('/sqlData', function(chartJSON) {
 					console.log(chartJSON);
 					for (i = 0; i < chartJSON.length; i++){
-						chartData.push([new Date(chartJSON[i].Date), chartJSON[i].Smoke]);
+						chartData.push([new Date(chartJSON[i].Date), chartJSON[i].EndDate]);
 					};
 					console.log(chartData);
 					drawChart();
