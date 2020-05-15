@@ -4,6 +4,8 @@ import time, sys
 import os
 import smtplib
 import sqlite3 as sql
+from datetime import datetime
+from datetime import timedelta
 
 smokePin = 27
 buzzpin = 21
@@ -35,13 +37,13 @@ def readSmoke(pin):
 		smoke = "smoke detected"
 		for i in range(1):
 			buzzer(buzzpin)
-		cur.execute('INSERT INTO smokeLog values(?)', (time.strftime('%Y-%m-%d %H:%M:%S'),))
+		cur.execute('INSERT INTO smokeLog values(?,?)', (datetime.now()),(datetime.now() + timedelta(seconds=30))
 		con.commit()
 		table = con.execute("select * from smokeLog")
 		os.system('clear')
-		print "%-30s" %("Date")
+		print "%-30s %-30s" %("Date","EndDate")
 		for row in table:
-			print "%-30s" %(row[0])
+			print "%-30s %-30s" %(row[0], row[1])
 		text = "SMOKE/FLAMMABLE GAS DETECTED IN ROOM"
 		eMessage = 'Subject: {}\n\n{}'.format(Subject, text)
 		server.login("hsghsghsghsghsghsghsg@gmail.com", "gfzx acav aorr ahqo")

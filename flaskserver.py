@@ -19,12 +19,12 @@ def chartData():
 	con = sql.connect('smokeLog.db')
 	cur = con.cursor()
 	con.row_factory = sql.Row
-	cur.execute("SELECT Date, Smoke FROM smokeLog")
+	cur.execute("SELECT Date FROM smokeLog")
 	dataset = cur.fetchall()
 	print (dataset)
 	chartData = []
 	for row in dataset:
-		chartData.append({"Date": row[0], "Smoke": row[1]})
+		chartData.append({"Date": row[0]})
 	return Response(json.dumps(chartData), mimetype='application/json')
 
 if __name__ == "__main__":

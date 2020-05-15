@@ -53,13 +53,10 @@
 				var container = document.getElementById('timeline');
 				var chart = new google.visualization.Timeline(container);
 				var dataTable = new google.visualization.DataTable();
-
 				dataTable.addColumn({ type: 'string', id: 'reading' });
 				dataTable.addColumn({ type: 'datetime', id: 'Start of detection' });
 				dataTable.addColumn({ type: 'datetime', id: 'End of detection' });
-				dataTable.addRows([
-					for i in chartData:
-					[ 'smoke detected', new Date(chartData[i]), new Date(chartData[i]) ]]);
+				dataTable.addRows(chartData);
 				chart.draw(dataTable);
 			}
 	        
