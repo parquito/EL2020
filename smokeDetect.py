@@ -3,8 +3,8 @@ import time, sys
 import os
 import smtplib
 import sqlite3 as sql
-import datetime
-import timedelta
+from datetime import datetime
+from datetime import timedelta
 
 smokePin = 27
 buzzpin = 21
