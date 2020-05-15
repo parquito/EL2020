@@ -35,13 +35,13 @@ def readSmoke(pin):
 		smoke = "smoke detected"
 		for i in range(1):
 			buzzer(buzzpin)
-		cur.execute('INSERT INTO smokeLog values(?,?)', (time.strftime('%Y-%m-%d %H:%M:%S'),smoke))
+		cur.execute('INSERT INTO smokeLog values(?)', (time.strftime('%Y-%m-%d %H:%M:%S'),))
 		con.commit()
 		table = con.execute("select * from smokeLog")
 		os.system('clear')
-		print "%-30s %-30s" %("Date", "Smoke")
+		print "%-30s" %("Date")
 		for row in table:
-			print "%-30s %-30s" %(row[0], row[1])
+			print "%-30s" %(row[0])
 		text = "SMOKE/FLAMMABLE GAS DETECTED IN ROOM"
 		eMessage = 'Subject: {}\n\n{}'.format(Subject, text)
 		server.login("hsghsghsghsghsghsghsg@gmail.com", "gfzx acav aorr ahqo")

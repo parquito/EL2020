@@ -55,10 +55,11 @@
 				var dataTable = new google.visualization.DataTable();
 
 				dataTable.addColumn({ type: 'string', id: 'reading' });
-				dataTable.addColumn({ type: 'date', id: 'Start' });
-				dataTable.addColumn({ type: 'date', id: 'End' });
+				dataTable.addColumn({ type: 'datetime', id: 'Start of detection' });
+				dataTable.addColumn({ type: 'datetime', id: 'End of detection' });
 				dataTable.addRows([
-					[ 'smoke detected', new Date(chartData), new Date(chartData + 00:00:30) ]]);
+					for i in chartData:
+					[ 'smoke detected', new Date(chartData[i]), new Date(chartData[i]) ]]);
 				chart.draw(dataTable);
 			}
 	        
