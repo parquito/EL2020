@@ -36,7 +36,7 @@ def readSmoke(pin):
 		smoke = "smoke detected"
 		for i in range(1):
 			buzzer(buzzpin)
-		cur.execute('INSERT INTO smokeLog values(?,?)', (datetime.now()),(datetime.now() + timedelta(seconds=30))
+		cur.execute('INSERT INTO smokeLog values(?,?)', (datetime.now()),(datetime.now() + timedelta(seconds=30)))
 		con.commit()
 		table = con.execute("select * from smokeLog")
 		os.system('clear')
